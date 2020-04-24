@@ -8,7 +8,7 @@ import java.io.*;
 import java.text.ParseException;
 import java.util.Date;
 
-public class CounterControlGui extends JFrame implements ActionListener {
+public class CounterControlGui extends JFrame implements ActionListener,PropertyEditor {
 
     Counter counter;
     JButton binc = new JButton("Increment");
@@ -98,5 +98,55 @@ public class CounterControlGui extends JFrame implements ActionListener {
     } catch (ParseException e1) {
             e1.printStackTrace();
         }
+    }
+
+    @Override
+    public void setValue(Object value) {
+
+    }
+
+    @Override
+    public Object getValue() {
+        return null;
+    }
+
+    @Override
+    public boolean isPaintable() {
+        return false;
+    }
+
+    @Override
+    public void paintValue(Graphics gfx, Rectangle box) {
+
+    }
+
+    @Override
+    public String getJavaInitializationString() {
+        return null;
+    }
+
+    @Override
+    public String getAsText() {
+        return null;
+    }
+
+    @Override
+    public void setAsText(String text) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public String[] getTags() {
+        return new String[0];
+    }
+
+    @Override
+    public Component getCustomEditor() {
+        return this;
+    }
+
+    @Override
+    public boolean supportsCustomEditor() {
+        return false;
     }
 }

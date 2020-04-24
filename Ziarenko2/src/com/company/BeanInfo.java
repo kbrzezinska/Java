@@ -6,25 +6,27 @@ import java.lang.reflect.Method;
 
 public class BeanInfo extends SimpleBeanInfo {
 
-    BeanInfo  beanInfo;
-
+    java.beans.BeanInfo  beanInfo;
+    PropertyDescriptor[] pd ;
+    MethodDescriptor[] md ;
+    EventSetDescriptor[] evd ;
+public BeanInfo() {
     {
         try {
-            beanInfo = (BeanInfo) Introspector.getBeanInfo(Class.forName(String.valueOf(JLabel.class)));
+            beanInfo =  Introspector.getBeanInfo(CounterView.class);
+            pd = beanInfo.getPropertyDescriptors();
+            md = beanInfo.getMethodDescriptors();
+            evd = beanInfo.getEventSetDescriptors();
         } catch (IntrospectionException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
-
+}
     ;
     public void say(String s) {
         System.out.println(s);
     }
-    PropertyDescriptor[] pd = beanInfo.getPropertyDescriptors();
-    MethodDescriptor[] md = beanInfo.getMethodDescriptors();
-    EventSetDescriptor[] evd = beanInfo.getEventSetDescriptors();
+
 
     public void properties() {
         say("Properties: ");
